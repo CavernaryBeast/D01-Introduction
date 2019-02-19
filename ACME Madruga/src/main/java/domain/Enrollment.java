@@ -14,6 +14,8 @@ public class Enrollment extends DomainEntity {
 
 	//Atributos asociativos
 	private Position	position;
+	private Member		member;
+	private Brotherhood	brotherhood;
 
 
 	@Past
@@ -40,6 +42,24 @@ public class Enrollment extends DomainEntity {
 
 	public void setPosition(final Position position) {
 		this.position = position;
+	}
+
+	@Valid
+	public Member getMember() {
+		return this.member;
+	}
+
+	public void setMember(final Member member) {
+		this.member = member;
+	}
+
+	@Valid
+	public Brotherhood getBrotherhood() {
+		return this.brotherhood;
+	}
+
+	public void setBrotherhood(final Brotherhood brotherhood) {
+		this.brotherhood = brotherhood;
 	}
 
 }

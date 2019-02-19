@@ -2,10 +2,10 @@
 package domain;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.URL;
 
 import security.UserAccount;
 
@@ -18,7 +18,7 @@ public class Actor extends DomainEntity {
 	private String		photo;
 	private String		email;
 	private String		phoneNumber;
-	private String		addres;
+	private String		address;
 
 	//Atributos asociativos
 	private UserAccount	userAccount;
@@ -33,6 +33,7 @@ public class Actor extends DomainEntity {
 		this.name = name;
 	}
 
+	@NotNull
 	public String getMiddleName() {
 		return this.middleName;
 	}
@@ -50,7 +51,7 @@ public class Actor extends DomainEntity {
 		this.surname = surname;
 	}
 
-	@URL
+	//Se hara una validación en los servicios, como en ACME HandyWorker
 	public String getPhoto() {
 		return this.photo;
 	}
@@ -59,6 +60,7 @@ public class Actor extends DomainEntity {
 		this.photo = photo;
 	}
 
+	//Revisar
 	@Pattern(regexp = "^\\w+([\\ \\<]+\\w+)*@+([\\w\\.\\>]*)+$")
 	public String getEmail() {
 		return this.email;
@@ -78,12 +80,13 @@ public class Actor extends DomainEntity {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getAddres() {
-		return this.addres;
+	@NotNull
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setAddres(final String addres) {
-		this.addres = addres;
+	public void setAddress(final String address) {
+		this.address = address;
 	}
 
 	@Valid

@@ -2,6 +2,7 @@
 package domain;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -45,6 +46,7 @@ public class RequestToMarch extends DomainEntity {
 		this.columnPosition = columnPosition;
 	}
 
+	@NotNull
 	public String getReason() {
 		return this.reason;
 	}
