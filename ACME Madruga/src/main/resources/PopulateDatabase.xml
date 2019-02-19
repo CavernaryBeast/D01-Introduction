@@ -24,39 +24,196 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMINISTRATOR" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<!-- Other domain beans come here -->	
+	<bean id="userAccount2" class="security.UserAccount"> 
+		<property name="username" value="brotherhood1" />
+		<property name="password" value="479E3180A45B21EA8E88BEB0C45AA8ED" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="BROTHERHOOD" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="brotherhood2" />
+		<property name="password" value="88F1B810C40CD63107FB758FEF4D77DB" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="BROTHERHOOD" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="brotherhood3" />
+		<property name="password" value="CB8F36C7D5BBBC6AA5798A0E5796EBD5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="BROTHERHOOD" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="member1" />
+		<property name="password" value="C7764CFED23C5CA3BB393308A0DA2306" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MEMBER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount6" class="security.UserAccount"> 
+		<property name="username" value="member2" />
+		<property name="password" value="88ED421F060AADCACBD63F28D889797F" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MEMBER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="member3" />
+		<property name="password" value="3EF4802D8A37022FD187FBD829D1C4D6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MEMBER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Actors -->
+	
+	<!-- ADMINISTRATOR -->
+	<bean id="admin" class="domain.Administrator">
+			<property name="name" value="Admin Name" />
+			<property name="middleName" value="Admin Middle Name" />
+			<property name="surname" value="Admin Surname" />
+			<property name="photo" value="https://photoadmin.jpg" />
+			<property name="email" value="admin@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Admin Address" />
+			<property name="userAccount" ref="userAccount1" />
+	</bean>
+	
+	<!-- ADMINISTRATOR FINISHED -->
+	
+	<!-- BROTHERHOODS -->
+	<bean id="brotherhood1" class="domain.Brotherhood">
+			<property name="name" value="Brotherhood1 Name" />
+			<property name="middleName" value="Brotherhood1 Middle Name" />
+			<property name="surname" value="Brotherhood1 Surname" />
+			<property name="photo" value="https://photobrotherhood1.jpg" />
+			<property name="email" value="brotherhood1@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Brotherhood1 Address" />
+			<property name="userAccount" ref="userAccount2" />
+			<property name="title" value="Brotherhood1 title" />
+			<property name="establishmentDate" value="2019/01/10" />
+			<property name="pictures">
+				<list>
+					<value>https://picturebrotherhood1.jpg</value>
+				</list>
+			</property>
+	</bean>
+	
+	<bean id="brotherhood2" class="domain.Brotherhood">
+			<property name="name" value="Brotherhood2 Name" />
+			<property name="middleName" value="Brotherhood2 Middle Name" />
+			<property name="surname" value="Brotherhood2 Surname" />
+			<property name="photo" value="https://photobrotherhood2.jpg" />
+			<property name="email" value="brotherhood2@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Brotherhood2 Address" />
+			<property name="userAccount" ref="userAccount3" />
+			<property name="title" value="Brotherhood2 title" />
+			<property name="establishmentDate" value="2019/01/10" />
+			<property name="pictures">
+				<list>
+					<value>https://picturebrotherhood2.jpg</value>
+				</list>
+			</property>
+	</bean>
+	
+	<bean id="brotherhood3" class="domain.Brotherhood">
+			<property name="name" value="Brotherhood3 Name" />
+			<property name="middleName" value="Brotherhood3 Middle Name" />
+			<property name="surname" value="Brotherhood3 Surname" />
+			<property name="photo" value="https://photobrotherhood3.jpg" />
+			<property name="email" value="brotherhood3@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Brotherhood3 Address" />
+			<property name="userAccount" ref="userAccount4" />
+			<property name="title" value="Brotherhood3 title" />
+			<property name="establishmentDate" value="2019/01/10" />
+			<property name="pictures">
+				<list>
+					<value>https://picturebrotherhood3.jpg</value>
+				</list>
+			</property>
+	</bean>
+	
+	<!-- BROTHERHOODS FINISHED -->
+	
+	<!-- MEMBERS -->
+	
+	<bean id="member1" class="domain.Member">
+			<property name="name" value="Member1 Name" />
+			<property name="middleName" value="Member1 Middle Name" />
+			<property name="surname" value="Member1 Surname" />
+			<property name="photo" value="https://photomember1.jpg" />
+			<property name="email" value="member1@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Member1 Address" />
+			<property name="userAccount" ref="userAccount5" />
+	</bean>
+	
+	<bean id="member2" class="domain.Member">
+			<property name="name" value="Member2 Name" />
+			<property name="middleName" value="Member2 Middle Name" />
+			<property name="surname" value="Member2 Surname" />
+			<property name="photo" value="https://photomember2.jpg" />
+			<property name="email" value="member2@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Member2 Address" />
+			<property name="userAccount" ref="userAccount6" />
+	</bean>
+	
+	<bean id="member3" class="domain.Member">
+			<property name="name" value="Member3 Name" />
+			<property name="middleName" value="Member3 Middle Name" />
+			<property name="surname" value="Member3 Surname" />
+			<property name="photo" value="https://photomember3.jpg" />
+			<property name="email" value="member3@us.es" />
+			<property name="phone" value="666666666" />
+			<property name="address" value="Member3 Address" />
+			<property name="userAccount" ref="userAccount7" />
+	</bean>
+	
+	<!-- MEMBERS FINISHED -->
+	
+	<!-- ACTORS FINISHED -->
+	
 	
 </beans>

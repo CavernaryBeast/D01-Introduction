@@ -1,12 +1,18 @@
 
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class RequestToMarch extends DomainEntity {
 
 	//Atributos de clase
@@ -56,6 +62,7 @@ public class RequestToMarch extends DomainEntity {
 	}
 
 	@Valid
+	@ManyToOne(optional = false)
 	public Member getMember() {
 		return this.member;
 	}
@@ -65,6 +72,7 @@ public class RequestToMarch extends DomainEntity {
 	}
 
 	@Valid
+	@ManyToOne(optional = false)
 	public Procession getProcession() {
 		return this.procession;
 	}

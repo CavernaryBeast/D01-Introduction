@@ -1,14 +1,21 @@
 
 package domain;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 
 import security.UserAccount;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Actor extends DomainEntity {
 
 	//Atributos de clase
@@ -61,7 +68,8 @@ public class Actor extends DomainEntity {
 	}
 
 	//Revisar
-	@Pattern(regexp = "^\\w+([\\ \\<]+\\w+)*@+([\\w\\.\\>]*)+$")
+	//@Pattern(regexp = "^\\w+([\\ \\<]+\\w+)*@+([\\w\\.\\>]*)+$")
+	@Column(unique = true)
 	public String getEmail() {
 		return this.email;
 	}
@@ -90,6 +98,7 @@ public class Actor extends DomainEntity {
 	}
 
 	@Valid
+	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	public UserAccount getUserAccount() {
 		return this.userAccount;
 	}

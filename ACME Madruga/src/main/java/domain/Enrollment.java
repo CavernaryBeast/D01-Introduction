@@ -3,9 +3,18 @@ package domain;
 
 import java.util.Date;
 
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.Past;
 
+@Entity
+@Access(AccessType.PROPERTY)
 public class Enrollment extends DomainEntity {
 
 	//Atributos de clase
@@ -19,6 +28,7 @@ public class Enrollment extends DomainEntity {
 
 
 	@Past
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -36,6 +46,7 @@ public class Enrollment extends DomainEntity {
 	}
 
 	@Valid
+	@OneToOne(optional = true)
 	public Position getPosition() {
 		return this.position;
 	}
@@ -45,6 +56,7 @@ public class Enrollment extends DomainEntity {
 	}
 
 	@Valid
+	@ManyToOne(optional = false)
 	public Member getMember() {
 		return this.member;
 	}
@@ -54,6 +66,7 @@ public class Enrollment extends DomainEntity {
 	}
 
 	@Valid
+	@ManyToOne(optional = false)
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}
