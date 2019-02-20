@@ -342,4 +342,163 @@
 
 	<!-- POSITIONS FINISHED -->
 
+	<!-- PROCESSIONALFLOATS -->
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD1 -->
+
+	<bean id="processionalFloat1" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat1 title" />
+		<property name="description" value="processionalFloat1 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat1.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="procession">
+			<list>
+				<ref bean="procession1" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD1 FINISHED -->
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD2 -->
+
+	<bean id="processionalFloat2" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat2 title" />
+		<property name="description" value="processionalFloat2 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat2.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="procession">
+			<list>
+				<ref bean="procession2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="processionalFloat3" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat3 title" />
+		<property name="description" value="processionalFloat3 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat3.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="procession">
+			<list>
+				<ref bean="procession2" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD2 FINISHED -->
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD3 -->
+
+	<bean id="processionalFloat4" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat4 title" />
+		<property name="description" value="processionalFloat4 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat4.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="procession">
+			<list>
+				<ref bean="procession3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="processionalFloat5" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat5 title" />
+		<property name="description" value="processionalFloat5 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat5.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="procession">
+			<list>
+				<ref bean="procession3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="processionalFloat6" class="domain.ProcessionalFloat">
+		<property name="title" value="processionalFloat6 title" />
+		<property name="description" value="processionalFloat6 description" />
+		<property name="pictures">
+			<list>
+				<value>https://pictureProcessionalFloat6.jpg</value>
+			</list>
+		</property>
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="procession">
+			<list>
+				<ref bean="procession3" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- PROCESSIONALFLOATS OF BROTHERHOOD3 FINISHED -->
+
+	<!-- PROCESSIONALFLOATS FINISHED -->
+
+	<!-- PROCESSIONS -->
+
+	<!-- PROCESSIONS OF BROTHERHOOD1 -->
+
+	<bean id="procession1" class="domain.Procession">
+		<property name="ticker" value="190210-ABCDE" />
+		<property name="title" value="procession1 title" />
+		<property name="description" value="procession1 description" />
+		<property name="moment" value="2019/02/20" />
+		<property name="mode" value="FINAL" />
+		<property name="brotherhood" ref="brotherhood1" />
+	</bean>
+
+	<!-- PROCESSIONS OF BROTHERHOOD1 FINISHED -->
+
+	<!-- PROCESSIONS OF BROTHERHOOD2 -->
+
+	<bean id="procession2" class="domain.Procession">
+		<property name="ticker" value="190210-FGHIJ" />
+		<property name="title" value="procession2 title" />
+		<property name="description" value="procession2 description" />
+		<property name="moment" value="2019/02/20" />
+		<property name="mode" value="FINAL" />
+		<property name="brotherhood" ref="brotherhood2" />
+	</bean>
+
+	<!-- PROCESSIONS OF BROTHERHOOD2 FINISHED -->
+
+	<!-- PROCESSIONS OF BROTHERHOOD3 -->
+
+	<bean id="procession3" class="domain.Procession">
+		<property name="ticker" value="190210-KLMNO" />
+		<property name="title" value="procession2 title" />
+		<property name="description" value="procession2 description" />
+		<property name="moment" value="2019/02/20" />
+		<property name="mode" value="FINAL" />
+		<property name="brotherhood" ref="brotherhood3" />
+	</bean>
+
+	<!-- PROCESSIONS OF BROTHERHOOD3 FINISHED -->
+
+	<!-- PROCESSIONS FINISHED -->
+
+	<!-- REQUESTTOMARCH -->
+
+	
+
 </beans>
