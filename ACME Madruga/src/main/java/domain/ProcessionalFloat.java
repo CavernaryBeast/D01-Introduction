@@ -19,13 +19,13 @@ import org.hibernate.validator.constraints.NotBlank;
 public class ProcessionalFloat extends DomainEntity {
 
 	//Atributos de clase
-	private String			title;
-	private String			description;
-	private List<String>	pictures;
+	private String				title;
+	private String				description;
+	private List<String>		pictures;
 
 	//Atributos de asociación
-	private Brotherhood		brotherhood;
-	private Procession		procession;
+	private Brotherhood			brotherhood;
+	private List<Procession>	procession;
 
 
 	@NotBlank
@@ -68,11 +68,11 @@ public class ProcessionalFloat extends DomainEntity {
 
 	@Valid
 	@ManyToMany
-	public Procession getProcession() {
+	public List<Procession> getProcession() {
 		return this.procession;
 	}
 
-	public void setProcession(final Procession procession) {
+	public void setProcession(final List<Procession> procession) {
 		this.procession = procession;
 	}
 
