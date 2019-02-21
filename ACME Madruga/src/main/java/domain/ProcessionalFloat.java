@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -46,6 +47,7 @@ public class ProcessionalFloat extends DomainEntity {
 	}
 
 	@NotNull
+	@ElementCollection
 	public List<String> getPictures() {
 		return this.pictures;
 	}

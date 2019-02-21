@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -16,14 +17,13 @@ import org.hibernate.validator.constraints.NotBlank;
 public class RequestToMarch extends DomainEntity {
 
 	//Atributos de clase
-	private String		status;
-	private Integer		rowPosition;
-	private Integer		columnPosition;
-	private String		reason;
+	private String				status;
+	private String				reason;
 
 	//Atributos asociativos
-	private Member		member;
-	private Procession	procession;
+	private Member				member;
+	private Procession			procession;
+	private ProcessionPosition	processionPosition;
 
 
 	@NotBlank
@@ -34,22 +34,6 @@ public class RequestToMarch extends DomainEntity {
 
 	public void setStatus(final String status) {
 		this.status = status;
-	}
-
-	public Integer getRowPosition() {
-		return this.rowPosition;
-	}
-
-	public void setRowPosition(final Integer rowPosition) {
-		this.rowPosition = rowPosition;
-	}
-
-	public Integer getColumnPosition() {
-		return this.columnPosition;
-	}
-
-	public void setColumnPosition(final Integer columnPosition) {
-		this.columnPosition = columnPosition;
 	}
 
 	@NotNull
@@ -79,6 +63,16 @@ public class RequestToMarch extends DomainEntity {
 
 	public void setProcession(final Procession procession) {
 		this.procession = procession;
+	}
+
+	@Valid
+	@OneToOne(optional = true)
+	public ProcessionPosition getProcessionPosition() {
+		return this.processionPosition;
+	}
+
+	public void setProcessionPosition(final ProcessionPosition processionPosition) {
+		this.processionPosition = processionPosition;
 	}
 
 }
