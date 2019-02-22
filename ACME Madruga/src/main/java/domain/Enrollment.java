@@ -37,6 +37,11 @@ public class Enrollment extends DomainEntity {
 		this.moment = moment;
 	}
 
+	/*
+	 * El atributo valid será usado para obtener las processions en las que ha estado un Member determinado
+	 * Tenemos 3 posibles casos:
+	 * Un Member
+	 */
 	public boolean isValid() {
 		return this.valid;
 	}
