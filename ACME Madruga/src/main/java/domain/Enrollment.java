@@ -19,12 +19,11 @@ public class Enrollment extends DomainEntity {
 
 	//Atributos de clase
 	private Date		moment;
-	private boolean		valid;
+	private Date		dropOutMoment;
 
-	//Atributos asociativos
+	//Atributos de asociación
 	private Position	position;
 	private Member		member;
-	private Brotherhood	brotherhood;
 
 
 	@Past
@@ -37,17 +36,14 @@ public class Enrollment extends DomainEntity {
 		this.moment = moment;
 	}
 
-	/*
-	 * El atributo valid será usado para obtener las processions en las que ha estado un Member determinado
-	 * Tenemos 3 posibles casos:
-	 * Un Member
-	 */
-	public boolean isValid() {
-		return this.valid;
+	@Past
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDropOutMoment() {
+		return this.dropOutMoment;
 	}
 
-	public void setValid(final boolean valid) {
-		this.valid = valid;
+	public void setDropOutMoment(final Date dropOutMoment) {
+		this.dropOutMoment = dropOutMoment;
 	}
 
 	@Valid
@@ -68,16 +64,6 @@ public class Enrollment extends DomainEntity {
 
 	public void setMember(final Member member) {
 		this.member = member;
-	}
-
-	@Valid
-	@ManyToOne(optional = false)
-	public Brotherhood getBrotherhood() {
-		return this.brotherhood;
-	}
-
-	public void setBrotherhood(final Brotherhood brotherhood) {
-		this.brotherhood = brotherhood;
 	}
 
 }
