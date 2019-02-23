@@ -7,8 +7,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -16,16 +16,16 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class ProcessionalFloat extends DomainEntity {
+@Table(name = "`Float`")
+public class Float extends DomainEntity {
 
 	//Atributos de clase
-	private String				title;
-	private String				description;
-	private List<String>		pictures;
+	private String			title;
+	private String			description;
+	private List<String>	pictures;
 
 	//Atributos de asociación
-	private Brotherhood			brotherhood;
-	private List<Procession>	procession;
+	private Brotherhood		brotherhood;
 
 
 	@NotBlank
@@ -64,16 +64,6 @@ public class ProcessionalFloat extends DomainEntity {
 
 	public void setBrotherhood(final Brotherhood brotherhood) {
 		this.brotherhood = brotherhood;
-	}
-
-	@Valid
-	@ManyToMany
-	public List<Procession> getProcession() {
-		return this.procession;
-	}
-
-	public void setProcession(final List<Procession> procession) {
-		this.procession = procession;
 	}
 
 }

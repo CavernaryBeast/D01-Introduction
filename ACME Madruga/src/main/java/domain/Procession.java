@@ -2,10 +2,13 @@
 package domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -25,8 +28,9 @@ public class Procession extends DomainEntity {
 	private Date		moment;
 	private String		mode;
 
-	//Atributos asociativos
+	//Atributos de asociación
 	private Brotherhood	brotherhood;
+	private List<Float>	floats;
 
 
 	@NotBlank
@@ -85,6 +89,17 @@ public class Procession extends DomainEntity {
 
 	public void setBrotherhood(final Brotherhood brotherhood) {
 		this.brotherhood = brotherhood;
+	}
+
+	@Valid
+	@ManyToMany
+	@ElementCollection
+	public List<domain.Float> getFloats() {
+		return this.floats;
+	}
+
+	public void setFloats(final List<domain.Float> floats) {
+		this.floats = floats;
 	}
 
 }
