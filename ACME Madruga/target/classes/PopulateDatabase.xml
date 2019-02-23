@@ -130,6 +130,13 @@
 				<value>https://picturebrotherhood1.jpg</value>
 			</list>
 		</property>
+		<property name="enrollments">
+			<list>
+				<ref bean="enrollment1" />
+				<ref bean="enrollment6" />
+				<ref bean="enrollment8" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="brotherhood2" class="domain.Brotherhood">
@@ -146,6 +153,13 @@
 		<property name="pictures">
 			<list>
 				<value>https://picturebrotherhood2.jpg</value>
+			</list>
+		</property>
+		<property name="enrollments">
+			<list>
+				<ref bean="enrollment2" />
+				<ref bean="enrollment4" />
+				<ref bean="enrollment9" />
 			</list>
 		</property>
 	</bean>
@@ -166,6 +180,13 @@
 				<value>https://picturebrotherhood3.jpg</value>
 			</list>
 		</property>
+		<property name="enrollments">
+			<list>
+				<ref bean="enrollment3" />
+				<ref bean="enrollment5" />
+				<ref bean="enrollment7" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- BROTHERHOODS FINISHED -->
@@ -181,6 +202,11 @@
 		<property name="phoneNumber" value="666666666" />
 		<property name="address" value="Member1 Address" />
 		<property name="userAccount" ref="userAccount5" />
+		<property name="requests">
+			<list>
+				<ref bean="requestToMarch1" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="member2" class="domain.Member">
@@ -192,6 +218,11 @@
 		<property name="phoneNumber" value="666666666" />
 		<property name="address" value="Member2 Address" />
 		<property name="userAccount" ref="userAccount6" />
+		<property name="requests">
+			<list>
+				<ref bean="requestToMarch2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="member3" class="domain.Member">
@@ -203,6 +234,11 @@
 		<property name="phoneNumber" value="666666666" />
 		<property name="address" value="Member3 Address" />
 		<property name="userAccount" ref="userAccount7" />
+		<property name="requests">
+			<list>
+				<ref bean="requestToMarch3" />
+			</list>
+		</property>
 	</bean>
 
 	<!-- MEMBERS FINISHED -->
@@ -215,9 +251,8 @@
 
 	<bean id="enrollment1" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member1" />
-		<property name="brotherhood" ref="brotherhood1" />
 		<property name="position">
 			<null />
 		</property>
@@ -225,17 +260,15 @@
 
 	<bean id="enrollment2" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="true" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member1" />
-		<property name="brotherhood" ref="brotherhood2" />
 		<property name="position" ref="president" />
 	</bean>
 
 	<bean id="enrollment3" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member1" />
-		<property name="brotherhood" ref="brotherhood3" />
 		<property name="position" ref="officer" />
 	</bean>
 
@@ -245,9 +278,8 @@
 
 	<bean id="enrollment4" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member2" />
-		<property name="brotherhood" ref="brotherhood2" />
 		<property name="position">
 			<null />
 		</property>
@@ -255,17 +287,15 @@
 
 	<bean id="enrollment5" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="true" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member2" />
-		<property name="brotherhood" ref="brotherhood3" />
 		<property name="position" ref="treasurer" />
 	</bean>
 
 	<bean id="enrollment6" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member2" />
-		<property name="brotherhood" ref="brotherhood1" />
 		<property name="position" ref="fundraiser" />
 	</bean>
 
@@ -275,9 +305,8 @@
 
 	<bean id="enrollment7" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member3" />
-		<property name="brotherhood" ref="brotherhood3" />
 		<property name="position">
 			<null />
 		</property>
@@ -285,17 +314,15 @@
 
 	<bean id="enrollment8" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="true" />
+		<property name="dropOutMoment"><null/></property>
 		<property name="member" ref="member3" />
-		<property name="brotherhood" ref="brotherhood1" />
 		<property name="position" ref="historian" />
 	</bean>
 
 	<bean id="enrollment9" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="valid" value="false" />
+		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member3" />
-		<property name="brotherhood" ref="brotherhood2" />
 		<property name="position" ref="vicePresident" />
 	</bean>
 
@@ -495,7 +522,6 @@
 		<property name="processionPosition">
 			<null />
 		</property>
-		<property name="member" ref="member1" />
 		<property name="procession" ref="procession1" />
 	</bean>
 
@@ -507,7 +533,6 @@
 		<property name="status" value="APPROVED" />
 		<property name="reason" value="" />
 		<property name="processionPosition" ref="processionPositionMember2" />
-		<property name="member" ref="member2" />
 		<property name="procession" ref="procession2" />
 	</bean>
 
@@ -528,7 +553,6 @@
 		<property name="processionPosition">
 			<null />
 		</property>
-		<property name="member" ref="member3" />
 		<property name="procession" ref="procession3" />
 	</bean>
 

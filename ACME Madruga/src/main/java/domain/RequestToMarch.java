@@ -20,8 +20,7 @@ public class RequestToMarch extends DomainEntity {
 	private String				status;
 	private String				reason;
 
-	//Atributos asociativos
-	private Member				member;
+	//Atributos de asociación
 	private Procession			procession;
 	private ProcessionPosition	processionPosition;
 
@@ -43,16 +42,6 @@ public class RequestToMarch extends DomainEntity {
 
 	public void setReason(final String reason) {
 		this.reason = reason;
-	}
-
-	@Valid
-	@ManyToOne(optional = false)
-	public Member getMember() {
-		return this.member;
-	}
-
-	public void setMember(final Member member) {
-		this.member = member;
 	}
 
 	@Valid
