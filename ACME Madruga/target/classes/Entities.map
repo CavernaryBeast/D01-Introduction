@@ -1,6 +1,11 @@
 #./src/main/resources/Entities.map
-#Thu Feb 21 20:40:47 CET 2019
+#Sat Feb 23 01:17:00 CET 2019
+float5=78
 processionPositionMember2=85
+float4=77
+float3=76
+float2=75
+float1=74
 historian=71
 secretary=69
 brotherhood3=54
@@ -10,13 +15,7 @@ member2=56
 brotherhood1=52
 member1=55
 admin=51
-processionalFloat6=79
 officer=73
-processionalFloat5=78
-processionalFloat4=77
-processionalFloat3=76
-processionalFloat2=75
-processionalFloat1=74
 procession3=82
 procession2=81
 vicePresident=68
@@ -43,3 +42,4 @@ treasurer=70
 requestToMarch3=86
 requestToMarch2=84
 requestToMarch1=83
+float6=79
