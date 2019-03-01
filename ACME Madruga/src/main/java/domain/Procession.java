@@ -1,8 +1,8 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -22,15 +22,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Procession extends DomainEntity {
 
 	//Atributos de clase
-	private String		ticker;
-	private String		title;
-	private String		description;
-	private Date		moment;
-	private String		mode;
+	private String				ticker;
+	private String				title;
+	private String				description;
+	private Date				moment;
+	private String				mode;
 
 	//Atributos de asociación
-	private Brotherhood	brotherhood;
-	private List<Float>	floats;
+	private Brotherhood			brotherhood;
+	private Collection<Float>	floats;
 
 
 	@NotBlank
@@ -94,11 +94,11 @@ public class Procession extends DomainEntity {
 	@Valid
 	@ManyToMany
 	@ElementCollection
-	public List<domain.Float> getFloats() {
+	public Collection<domain.Float> getFloats() {
 		return this.floats;
 	}
 
-	public void setFloats(final List<domain.Float> floats) {
+	public void setFloats(final Collection<domain.Float> floats) {
 		this.floats = floats;
 	}
 

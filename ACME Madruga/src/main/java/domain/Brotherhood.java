@@ -1,8 +1,8 @@
 
 package domain;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -23,12 +23,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Brotherhood extends Actor {
 
 	//Atributos de clase
-	private String				title;
-	private Date				establishmentDate;
-	private List<String>		pictures;
+	private String					title;
+	private Date					establishmentDate;
+	private Collection<String>		pictures;
 
 	//Atributos de asociación
-	private List<Enrollment>	enrollments;
+	private Collection<Enrollment>	enrollments;
 
 
 	@NotBlank
@@ -53,21 +53,21 @@ public class Brotherhood extends Actor {
 
 	@NotEmpty
 	@ElementCollection
-	public List<String> getPictures() {
+	public Collection<String> getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final List<String> pictures) {
+	public void setPictures(final Collection<String> pictures) {
 		this.pictures = pictures;
 	}
 
 	@Valid
 	@OneToMany
-	public List<Enrollment> getEnrollments() {
+	public Collection<Enrollment> getEnrollments() {
 		return this.enrollments;
 	}
 
-	public void setEnrollments(final List<Enrollment> enrollments) {
+	public void setEnrollments(final Collection<Enrollment> enrollments) {
 		this.enrollments = enrollments;
 	}
 

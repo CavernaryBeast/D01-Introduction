@@ -1,7 +1,7 @@
 
 package domain;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -20,12 +20,12 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Float extends DomainEntity {
 
 	//Atributos de clase
-	private String			title;
-	private String			description;
-	private List<String>	pictures;
+	private String				title;
+	private String				description;
+	private Collection<String>	pictures;
 
 	//Atributos de asociación
-	private Brotherhood		brotherhood;
+	private Brotherhood			brotherhood;
 
 
 	@NotBlank
@@ -48,11 +48,11 @@ public class Float extends DomainEntity {
 
 	@NotNull
 	@ElementCollection
-	public List<String> getPictures() {
+	public Collection<String> getPictures() {
 		return this.pictures;
 	}
 
-	public void setPictures(final List<String> pictures) {
+	public void setPictures(final Collection<String> pictures) {
 		this.pictures = pictures;
 	}
 

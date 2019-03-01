@@ -1,7 +1,7 @@
 
 package domain;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -14,16 +14,16 @@ import javax.validation.Valid;
 public class Member extends Actor {
 
 	//Atributos de asociación
-	private List<RequestToMarch>	requests;
+	private Collection<RequestToMarch>	requests;
 
 
 	@Valid
 	@OneToMany
-	public List<RequestToMarch> getRequests() {
+	public Collection<RequestToMarch> getRequests() {
 		return this.requests;
 	}
 
-	public void setRequests(final List<RequestToMarch> requests) {
+	public void setRequests(final Collection<RequestToMarch> requests) {
 		this.requests = requests;
 	}
 
