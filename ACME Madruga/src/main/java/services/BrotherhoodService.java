@@ -95,7 +95,6 @@ public class BrotherhoodService {
 	public Brotherhood updateAssociates(final Brotherhood bro) {
 
 		Assert.isTrue(bro.getId() != 0);
-		Assert.notNull(bro);
 
 		return this.brotherhoodRepository.save(bro);
 	}

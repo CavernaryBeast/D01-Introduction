@@ -88,6 +88,13 @@ public class MemberService {
 		return saved;
 	}
 
+	public Member updateAssociates(final Member member) {
+
+		Assert.isTrue(member.getId() != 0);
+
+		return this.memberRepository.save(member);
+	}
+
 	public Member findByRequest(final int id) {
 
 		Assert.isTrue(id != 0);
