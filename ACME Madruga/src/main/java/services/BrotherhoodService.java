@@ -28,11 +28,13 @@ public class BrotherhoodService {
 
 
 	public Brotherhood create() {
-		final Brotherhood bro = new Brotherhood();
 
+		final Brotherhood bro = new Brotherhood();
 		this.actorService.setNewActor(Authority.BROTHERHOOD, bro);
+
 		final Collection<String> defaultPictures = new ArrayList<>();
 		bro.setPictures(defaultPictures);
+
 		final Collection<Enrollment> defaultEnrollments = new ArrayList<>();
 		bro.setEnrollments(defaultEnrollments);
 
@@ -48,6 +50,14 @@ public class BrotherhoodService {
 	public Brotherhood findOne(final int id) {
 		Assert.isTrue(id != 0);
 		final Brotherhood res = this.brotherhoodRepository.findOne(id);
+		Assert.notNull(res);
+
+		return res;
+	}
+
+	public Brotherhood findByUserAccountId(final int id) {
+		Assert.isTrue(id != 0);
+		final Brotherhood res = this.brotherhoodRepository.findByUserAccountId(id);
 		Assert.notNull(res);
 
 		return res;
@@ -69,9 +79,45 @@ public class BrotherhoodService {
 		return this.brotherhoodRepository.exists(id);
 	}
 
-	public Brotherhood findByUserAccountId(final int id) {
+	public Brotherhood save(final Brotherhood bro) {
+
+		Assert.notNull(bro);
+		Brotherhood saved;
+
+		if (bro.getId() == 0)
+			saved = this.brotherhoodRepository.save(bro);
+		else
+			saved = (Brotherhood) this.actorService.update(bro);
+
+		return saved;
+	}
+
+	public Brotherhood updateAssociates(final Brotherhood bro) {
+
+		Assert.isTrue(bro.getId() != 0);
+		Assert.notNull(bro);
+
+		return this.brotherhoodRepository.save(bro);
+	}
+
+	//Brotherhoods a las que pertenece un Member
+	public Collection<Brotherhood> findBelonging(final int id) {
+
 		Assert.isTrue(id != 0);
-		return this.brotherhoodRepository.findByUserAccountId(id);
+		final Collection<Brotherhood> res = this.brotherhoodRepository.findBelonging(id);
+		Assert.notEmpty(res);
+
+		return res;
+	}
+
+	//Brotherhoods a las que ha pertenecido un Member
+	public Collection<Brotherhood> findHasBelonged(final int id) {
+
+		Assert.isTrue(id != 0);
+		final Collection<Brotherhood> res = this.brotherhoodRepository.findHasBelonged(id);
+		Assert.notEmpty(res);
+
+		return res;
 	}
 
 }

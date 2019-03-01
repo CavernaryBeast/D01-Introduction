@@ -251,7 +251,9 @@
 
 	<bean id="enrollment1" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member1" />
 		<property name="position">
 			<null />
@@ -260,7 +262,9 @@
 
 	<bean id="enrollment2" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member1" />
 		<property name="position" ref="president" />
 	</bean>
@@ -269,7 +273,9 @@
 		<property name="moment" value="2019/01/20" />
 		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member1" />
-		<property name="position" ref="officer" />
+		<property name="position">
+			<null />
+		</property>
 	</bean>
 
 	<!-- MEMBER1'S ENROLLMENTS FINISHED -->
@@ -278,7 +284,9 @@
 
 	<bean id="enrollment4" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member2" />
 		<property name="position">
 			<null />
@@ -287,7 +295,9 @@
 
 	<bean id="enrollment5" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member2" />
 		<property name="position" ref="treasurer" />
 	</bean>
@@ -296,7 +306,9 @@
 		<property name="moment" value="2019/01/20" />
 		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member2" />
-		<property name="position" ref="fundraiser" />
+		<property name="position">
+			<null />
+		</property>
 	</bean>
 
 	<!-- MEMBER2'S ENROLLMENTS FINISHED -->
@@ -305,7 +317,9 @@
 
 	<bean id="enrollment7" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member3" />
 		<property name="position">
 			<null />
@@ -314,7 +328,9 @@
 
 	<bean id="enrollment8" class="domain.Enrollment">
 		<property name="moment" value="2019/01/20" />
-		<property name="dropOutMoment"><null/></property>
+		<property name="dropOutMoment">
+			<null />
+		</property>
 		<property name="member" ref="member3" />
 		<property name="position" ref="historian" />
 	</bean>
@@ -323,7 +339,9 @@
 		<property name="moment" value="2019/01/20" />
 		<property name="dropOutMoment" value="2019/02/10" />
 		<property name="member" ref="member3" />
-		<property name="position" ref="vicePresident" />
+		<property name="position">
+			<null />
+		</property>
 	</bean>
 
 	<!-- MEMBER3'S ENROLLMENTS FINISHED -->
@@ -464,7 +482,7 @@
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="floats">
 			<list>
-				<ref bean="float1"/>
+				<ref bean="float1" />
 			</list>
 		</property>
 	</bean>
@@ -482,8 +500,8 @@
 		<property name="brotherhood" ref="brotherhood2" />
 		<property name="floats">
 			<list>
-				<ref bean="float2"/>
-				<ref bean="float3"/>
+				<ref bean="float2" />
+				<ref bean="float3" />
 			</list>
 		</property>
 	</bean>
@@ -501,9 +519,9 @@
 		<property name="brotherhood" ref="brotherhood3" />
 		<property name="floats">
 			<list>
-				<ref bean="float4"/>
-				<ref bean="float5"/>
-				<ref bean="float6"/>
+				<ref bean="float4" />
+				<ref bean="float5" />
+				<ref bean="float6" />
 			</list>
 		</property>
 	</bean>

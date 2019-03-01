@@ -64,6 +64,7 @@ public class AdministratorService {
 	public Administrator findByUserAccountId(final int id) {
 		Assert.isTrue(id != 0);
 		final Administrator res = this.administratorRepository.findByUserAccountId(id);
+		Assert.notNull(res);
 		return res;
 	}
 

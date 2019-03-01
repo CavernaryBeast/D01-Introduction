@@ -55,9 +55,8 @@ public class ActorService {
 		return this.actorRepository.save(a);
 	}
 
-	public Actor findByUserId(final int id) {
+	public Actor findByUserAccountId(final int id) {
 		Assert.isTrue(id != 0);
-
 		final Actor res = this.actorRepository.findByUserAccountId(id);
 		Assert.notNull(res);
 		return res;
@@ -66,8 +65,7 @@ public class ActorService {
 	public Actor findByPrincipal() {
 		final UserAccount userAccount = LoginService.getPrincipal();
 		Assert.notNull(userAccount);
-
-		final Actor res = this.findByUserId(userAccount.getId());
+		final Actor res = this.findByUserAccountId(userAccount.getId());
 		Assert.notNull(res);
 
 		return res;
