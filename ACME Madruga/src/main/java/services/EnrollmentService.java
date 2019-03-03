@@ -75,6 +75,7 @@ public class EnrollmentService {
 		Assert.notNull(enroll);
 		Assert.isTrue(brotherhoodId != 0);
 		Enrollment saved;
+		final Member principal = this.memberService.findByPrincipal();
 
 		final Brotherhood brotherhoodObjective = this.brotherhoodService.findOne(brotherhoodId);
 		final Date moment = new Date(System.currentTimeMillis() - 100);

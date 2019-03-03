@@ -91,6 +91,7 @@ public class MemberService {
 	public Member updateAssociates(final Member member) {
 
 		Assert.isTrue(member.getId() != 0);
+		final Member principal = this.findByPrincipal();
 
 		return this.memberRepository.save(member);
 	}

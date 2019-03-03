@@ -77,6 +77,9 @@ public class ProcessionService {
 		Assert.notNull(pro);
 		Procession saved;
 
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
+		Assert.isTrue(pro.getBrotherhood().equals(bro));
+
 		final String ticker = this.configurationParametersService.createTicker();
 		pro.setTicker(ticker);
 
@@ -90,10 +93,12 @@ public class ProcessionService {
 		Assert.notNull(pro);
 		Assert.isTrue(pro.getId() != 0);
 
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
+		Assert.isTrue(pro.getBrotherhood().equals(bro));
+
 		final Collection<RequestToMarch> requests = this.requestToMarchService.findByProcessionId(pro.getId());
-		for(RequestToMarch request : requests){
+		for (final RequestToMarch request : requests)
 			this.requestToMarchService.delete(request);
-		}
 		this.processionRepository.delete(pro);
 	}
 

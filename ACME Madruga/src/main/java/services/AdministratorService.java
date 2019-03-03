@@ -31,6 +31,13 @@ public class AdministratorService {
 		return res;
 	}
 
+	public Administrator findOne(final int id) {
+		Assert.isTrue(id != 0);
+		final Administrator res = this.administratorRepository.findOne(id);
+		Assert.notNull(res);
+		return res;
+	}
+
 	public Administrator save(final Administrator a) {
 		Assert.notNull(a);
 		Administrator res;
@@ -39,13 +46,6 @@ public class AdministratorService {
 		else
 			res = (Administrator) this.actorService.update(a);
 
-		return res;
-	}
-
-	public Administrator findOne(final int id) {
-		Assert.isTrue(id != 0);
-		final Administrator res = this.administratorRepository.findOne(id);
-		Assert.notNull(res);
 		return res;
 	}
 

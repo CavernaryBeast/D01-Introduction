@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ProcessionPositionRepository;
+import domain.Brotherhood;
 import domain.ProcessionPosition;
 
 @Service
@@ -17,6 +18,9 @@ public class ProcessionPositionService {
 
 	@Autowired
 	private ProcessionPositionRepository	processionPositionRepository;
+
+	@Autowired
+	private BrotherhoodService				brotherhoodService;
 
 
 	public ProcessionPosition create(final int row, final int column) {
@@ -49,6 +53,7 @@ public class ProcessionPositionService {
 
 		Assert.notNull(proPos);
 		ProcessionPosition saved;
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
 
 		saved = this.processionPositionRepository.save(proPos);
 
@@ -60,7 +65,18 @@ public class ProcessionPositionService {
 		Assert.notNull(proPos);
 		Assert.isTrue(proPos.getId() != 0);
 
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
+
 		this.processionPositionRepository.delete(proPos);
+	}
+
+	public Collection<ProcessionPosition> findByProcessionId(final int processionId) {
+
+		Assert.isTrue(processionId != 0);
+		final Collection<ProcessionPosition> allProPos = this.processionPositionRepository.findByProcessionId(processionId);
+		Assert.notEmpty(allProPos);
+
+		return allProPos;
 	}
 
 }

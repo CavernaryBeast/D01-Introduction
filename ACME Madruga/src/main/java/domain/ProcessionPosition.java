@@ -33,4 +33,18 @@ public class ProcessionPosition extends DomainEntity {
 		this.columnPosition = columnPosition;
 	}
 
+	public boolean equals(final ProcessionPosition proPos) {
+
+		if (this.getRowPosition() == proPos.getRowPosition() && this.getColumnPosition() == proPos.getColumnPosition())
+			return true;
+		else if (this.getRowPosition() == proPos.getRowPosition() && this.getColumnPosition() != proPos.getColumnPosition())
+			return false;
+		else if (this.getRowPosition() != proPos.getRowPosition() && this.getColumnPosition() == proPos.getColumnPosition())
+			return false;
+		else if (this.equals(null))
+			return true;
+		else
+			return false;
+	}
+
 }

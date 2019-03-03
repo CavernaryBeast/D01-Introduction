@@ -61,6 +61,8 @@ public class FloatService {
 
 		Assert.notNull(flo);
 		domain.Float saved;
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
+		Assert.isTrue(flo.getBrotherhood().equals(bro));
 
 		saved = this.floatRepository.save(flo);
 
@@ -72,10 +74,12 @@ public class FloatService {
 		Assert.notNull(flo);
 		Assert.isTrue(flo.getId() != 0);
 
+		final Brotherhood bro = this.brotherhoodService.findByPrincipal();
+		Assert.isTrue(flo.getBrotherhood().equals(bro));
+
 		final Collection<Procession> processions = this.processionService.findByFloatId(flo.getId());
-		for (final Procession pro : processions) {
+		for (final Procession pro : processions)
 			this.processionService.removeFloat(pro, flo);
-		}
 		this.floatRepository.delete(flo);
 	}
 
