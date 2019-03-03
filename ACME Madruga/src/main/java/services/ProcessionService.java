@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ProcessionRepository;
+import domain.Administrator;
 import domain.Brotherhood;
 import domain.Procession;
 import domain.RequestToMarch;
@@ -30,6 +31,9 @@ public class ProcessionService {
 
 	@Autowired
 	private ConfigurationParametersService	configurationParametersService;
+
+	@Autowired
+	private AdministratorService			administratorService;
 
 
 	public Procession create() {
@@ -122,6 +126,16 @@ public class ProcessionService {
 
 		pro.getFloats().remove(flo);
 		this.processionRepository.save(pro);
+	}
+
+	public Collection<Procession> findNext30DaysProcessions() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Collection<Procession> res = this.processionRepository.findNext30DaysProcessions();
+		Assert.notNull(res);
+
+		return res;
 	}
 
 }

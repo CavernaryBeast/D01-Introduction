@@ -15,7 +15,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
 import domain.Brotherhood;
-import domain.Enrollment;
+import domain.Member;
 
 @Service
 @Transactional
@@ -39,8 +39,8 @@ public class BrotherhoodService {
 		final Collection<String> defaultPictures = new ArrayList<>();
 		bro.setPictures(defaultPictures);
 
-		final Collection<Enrollment> defaultEnrollments = new ArrayList<>();
-		bro.setEnrollments(defaultEnrollments);
+		final Collection<Member> defaultMembers = new ArrayList<>();
+		bro.setMembers(defaultMembers);
 
 		return bro;
 	}
@@ -131,6 +131,26 @@ public class BrotherhoodService {
 		Assert.notNull(res);
 
 		return res;
+	}
+
+	public Brotherhood findLargestBrotherhood() {
+
+		final Integer aux = this.brotherhoodRepository.findAuxLargestBrotherhood();
+		Assert.notNull(aux);
+		final Brotherhood bro = this.brotherhoodRepository.findLargestBrotherhood(aux);
+		Assert.notNull(bro);
+
+		return bro;
+	}
+
+	public Brotherhood findSmallestBrotherhood() {
+
+		final Integer aux = this.brotherhoodRepository.findAuxSmallestBrotherhood();
+		Assert.notNull(aux);
+		final Brotherhood bro = this.brotherhoodRepository.findSmallestBrotherhood(aux);
+		Assert.notNull(bro);
+
+		return bro;
 	}
 
 }

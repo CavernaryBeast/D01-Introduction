@@ -2,6 +2,8 @@
 package services;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.RequestToMarchRepository;
+import domain.Administrator;
 import domain.Brotherhood;
 import domain.Member;
 import domain.Procession;
@@ -33,6 +36,9 @@ public class RequestToMarchService {
 
 	@Autowired
 	private ProcessionPositionService	processionPositionService;
+
+	@Autowired
+	private AdministratorService		administratorService;
 
 
 	public RequestToMarch create(final int processionId) {
@@ -147,6 +153,58 @@ public class RequestToMarchService {
 		Assert.notEmpty(requests);
 
 		return requests;
+	}
+
+	public Map<String, Double> findRequestsRatio() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Map<String, Double> ratio = new HashMap<>();
+
+		//Aux methods written below
+		final Double pendingRatio = this.findPendingRequestsRatio();
+		final Double approvedratio = this.findApprovedRequestsRatio();
+		final Double rejectedRatio = this.findRejectedRequestsRatio();
+
+		ratio.put("PENDING", pendingRatio);
+		ratio.put("APPROVED", approvedratio);
+		ratio.put("REJECTED", rejectedRatio);
+
+		return ratio;
+	}
+
+	private Double findPendingRequestsRatio() {
+
+		final Double res = this.requestToMarchRepository.findPendingRequestsRatio();
+		Assert.notNull(res);
+
+		return res;
+	}
+
+	private Double findApprovedRequestsRatio() {
+
+		final Double res = this.requestToMarchRepository.findApprovedRequestsRatio();
+		Assert.notNull(res);
+
+		return res;
+	}
+
+	private Double findRejectedRequestsRatio() {
+
+		final Double res = this.requestToMarchRepository.findRejectedRequestsRatio();
+		Assert.notNull(res);
+
+		return res;
+	}
+
+	public Double findMaxRequestsApproved() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Double max = this.requestToMarchRepository.findMaxRequestsApproved();
+		Assert.notNull(max);
+
+		return max;
 	}
 
 }

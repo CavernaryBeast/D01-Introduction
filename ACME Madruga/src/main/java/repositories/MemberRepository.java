@@ -21,4 +21,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	@Query("select mem from Brotherhood bro join bro.enrollments enroll join enroll.member mem where bro.id=?1 AND enroll.position IS NOT NULL")
 	Collection<Member> findByBrotherhoodId(Integer id);
 
+	@Query("select mem from Member mem join mem.requests req where mem.requests.size > ?1*0.1 AND req.status='APPROVED'")
+	Collection<Member> findAtLeast10MaxRequest(Double max);
+
 }

@@ -32,7 +32,7 @@ public class EnrollmentService {
 	private PositionService			positionService;
 
 
-	public Enrollment create() {
+	public Enrollment create(final int brotherhoodId) {
 
 		final Enrollment res = new Enrollment();
 		final Date moment = new Date(System.currentTimeMillis() - 100);
@@ -40,6 +40,9 @@ public class EnrollmentService {
 
 		final Member principal = this.memberService.findByPrincipal();
 		res.setMember(principal);
+
+		final Brotherhood bro = this.brotherhoodService.findOne(brotherhoodId);
+		res.setBrotherhood(bro);
 
 		return res;
 	}
@@ -70,20 +73,15 @@ public class EnrollmentService {
 		return res;
 	}
 
-	public Enrollment save(final Enrollment enroll, final int brotherhoodId) {
+	public Enrollment save(final Enrollment enroll) {
 
 		Assert.notNull(enroll);
-		Assert.isTrue(brotherhoodId != 0);
 		Enrollment saved;
 		final Member principal = this.memberService.findByPrincipal();
 
-		final Brotherhood brotherhoodObjective = this.brotherhoodService.findOne(brotherhoodId);
 		final Date moment = new Date(System.currentTimeMillis() - 100);
 		enroll.setMoment(moment);
 		saved = this.enrollmentRepository.save(enroll);
-
-		brotherhoodObjective.getEnrollments().add(saved);
-		this.brotherhoodService.updateAssociates(brotherhoodObjective);
 
 		return saved;
 	}
@@ -97,12 +95,15 @@ public class EnrollmentService {
 
 		final Enrollment enroll = this.findOne(enrollmentId);
 
-		Assert.isTrue(bro.getEnrollments().contains(enroll));
+		Assert.isTrue(enroll.getBrotherhood().equals(bro));
 
 		final Position position = this.positionService.findOne(positionId);
 
 		enroll.setPosition(position);
 		enroll.setDropOutMoment(null);
+
+		bro.getMembers().add(enroll.getMember());
+		this.brotherhoodService.updateAssociates(bro);
 
 		return this.enrollmentRepository.save(enroll);
 	}
@@ -121,6 +122,10 @@ public class EnrollmentService {
 		final Date dropOutMoment = new Date(System.currentTimeMillis() - 100);
 		enroll.setDropOutMoment(dropOutMoment);
 
+		final Brotherhood bro = enroll.getBrotherhood();
+		bro.getMembers().remove(enroll.getMember());
+		this.brotherhoodService.updateAssociates(bro);
+
 		return this.enrollmentRepository.save(enroll);
 	}
 
@@ -132,11 +137,14 @@ public class EnrollmentService {
 		final Brotherhood principal = this.brotherhoodService.findByPrincipal();
 
 		final Enrollment enroll = this.findOne(enrollmentId);
-		Assert.isTrue(principal.getEnrollments().contains(enroll));
+		Assert.isTrue(enroll.getBrotherhood().equals(principal));
 
 		enroll.setPosition(null);
 		final Date dropOutMoment = new Date(System.currentTimeMillis() - 100);
 		enroll.setDropOutMoment(dropOutMoment);
+
+		principal.getMembers().remove(enroll.getMember());
+		this.brotherhoodService.updateAssociates(principal);
 
 		return this.enrollmentRepository.save(enroll);
 	}

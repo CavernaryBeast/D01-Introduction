@@ -13,6 +13,7 @@ import repositories.MemberRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Administrator;
 import domain.Member;
 import domain.RequestToMarch;
 
@@ -21,10 +22,16 @@ import domain.RequestToMarch;
 public class MemberService {
 
 	@Autowired
-	private MemberRepository	memberRepository;
+	private MemberRepository		memberRepository;
 
 	@Autowired
-	private ActorService		actorService;
+	private ActorService			actorService;
+
+	@Autowired
+	private AdministratorService	administratorService;
+
+	@Autowired
+	private RequestToMarchService	requestToMarchService;
 
 
 	public Member create() {
@@ -109,6 +116,18 @@ public class MemberService {
 		Assert.isTrue(id != 0);
 		final Collection<Member> res = this.memberRepository.findByBrotherhoodId(id);
 		Assert.notEmpty(res);
+
+		return res;
+	}
+
+	public Collection<Member> findAtLeast10MaxRequests() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Double max = this.requestToMarchService.findMaxRequestsApproved();
+
+		final Collection<Member> res = this.memberRepository.findAtLeast10MaxRequest(max);
+		Assert.notNull(res);
 
 		return res;
 	}

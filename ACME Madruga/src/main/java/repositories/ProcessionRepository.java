@@ -15,4 +15,7 @@ public interface ProcessionRepository extends JpaRepository<Procession, Integer>
 	@Query("select pro from Procession pro join pro.floats flo where flo.id=?1")
 	Collection<Procession> findByFloatId(int floatId);
 
+	@Query("select pro from Procession pro where pro.moment is between ")
+	Collection<Procession> findNext30DaysProcessions();
+
 }

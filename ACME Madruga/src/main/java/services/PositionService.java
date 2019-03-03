@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,9 @@ public class PositionService {
 
 	@Autowired
 	private AdministratorService	administratorService;
-	
+
 	@Autowired
-	private EnrollmentService enrollmentService;
+	private EnrollmentService		enrollmentService;
 
 
 	public Position create() {
@@ -63,18 +64,27 @@ public class PositionService {
 
 		return this.positionRepository.save(pos);
 	}
-	
-	public void delete(Position pos){
-		
+
+	public void delete(final Position pos) {
+
 		Assert.notNull(pos);
-		Assert.isTrue(pos.getId()!=0);
-		Administrator principal = this.administratorService.findByPrincipal();
-		
-		Collection<Enrollment> enrollments = this.enrollmentService.findAll();
-		for(Enrollment enroll : enrollments){
+		Assert.isTrue(pos.getId() != 0);
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Collection<Enrollment> enrollments = this.enrollmentService.findAll();
+		for (final Enrollment enroll : enrollments)
 			Assert.isTrue(!enroll.getPosition().equals(pos));
-		}
 		this.positionRepository.delete(pos);
+	}
+
+	public Map<Integer, Integer> positionHistogram() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+
+		final Map<Integer, Integer> positionHistogram = this.positionRepository.positionHistogram();
+		Assert.notNull(positionHistogram);
+
+		return positionHistogram;
 	}
 
 }

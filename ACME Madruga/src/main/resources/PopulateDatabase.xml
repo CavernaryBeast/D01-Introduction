@@ -130,11 +130,11 @@
 				<value>https://picturebrotherhood1.jpg</value>
 			</list>
 		</property>
-		<property name="enrollments">
+		<property name="members">
 			<list>
-				<ref bean="enrollment1" />
-				<ref bean="enrollment6" />
-				<ref bean="enrollment8" />
+				<ref bean="member3" />
+			<!-- EXTRA MEMBER FOR QUERIES -->
+				<ref bean="member4" />
 			</list>
 		</property>
 	</bean>
@@ -155,11 +155,9 @@
 				<value>https://picturebrotherhood2.jpg</value>
 			</list>
 		</property>
-		<property name="enrollments">
+		<property name="members">
 			<list>
-				<ref bean="enrollment2" />
-				<ref bean="enrollment4" />
-				<ref bean="enrollment9" />
+				<ref bean="member1" />
 			</list>
 		</property>
 	</bean>
@@ -180,11 +178,9 @@
 				<value>https://picturebrotherhood3.jpg</value>
 			</list>
 		</property>
-		<property name="enrollments">
+		<property name="members">
 			<list>
-				<ref bean="enrollment3" />
-				<ref bean="enrollment5" />
-				<ref bean="enrollment7" />
+				<ref bean="member2" />
 			</list>
 		</property>
 	</bean>
@@ -258,6 +254,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 
 	<bean id="enrollment2" class="domain.Enrollment">
@@ -267,6 +264,7 @@
 		</property>
 		<property name="member" ref="member1" />
 		<property name="position" ref="president" />
+		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 
 	<bean id="enrollment3" class="domain.Enrollment">
@@ -276,6 +274,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood3" />
 	</bean>
 
 	<!-- MEMBER1'S ENROLLMENTS FINISHED -->
@@ -291,6 +290,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 
 	<bean id="enrollment5" class="domain.Enrollment">
@@ -300,6 +300,7 @@
 		</property>
 		<property name="member" ref="member2" />
 		<property name="position" ref="treasurer" />
+		<property name="brotherhood" ref="brotherhood3" />
 	</bean>
 
 	<bean id="enrollment6" class="domain.Enrollment">
@@ -309,6 +310,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 
 	<!-- MEMBER2'S ENROLLMENTS FINISHED -->
@@ -324,6 +326,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood3" />
 	</bean>
 
 	<bean id="enrollment8" class="domain.Enrollment">
@@ -333,6 +336,7 @@
 		</property>
 		<property name="member" ref="member3" />
 		<property name="position" ref="historian" />
+		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 
 	<bean id="enrollment9" class="domain.Enrollment">
@@ -342,6 +346,7 @@
 		<property name="position">
 			<null />
 		</property>
+		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 
 	<!-- MEMBER3'S ENROLLMENTS FINISHED -->
@@ -579,6 +584,50 @@
 	<!-- REQUESTTOMARCH FINISHED -->
 
 	<!-- FIRST VERSION OF POPULATE FINISHED ON 21/02/2019 -->
+
+	<!-- EXTRA DATA FOR QUERIES -->
+
+	<!-- EXTRA MEMBERS -->
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="member4" />
+		<property name="password" value="A998123003066AC9FA7DE4B100E7C4BC" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="MEMBER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="member4" class="domain.Member">
+		<property name="name" value="Member4 Name" />
+		<property name="middleName" value="Member4 Middle Name" />
+		<property name="surname" value="Member4 Surname" />
+		<property name="photo" value="https://photomember4.jpg" />
+		<property name="email" value="member4@us.es" />
+		<property name="phoneNumber" value="666666666" />
+		<property name="address" value="Member4 Address" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="requests">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="enrollment10" class="domain.Enrollment">
+		<property name="moment" value="2019/01/20" />
+		<property name="dropOutMoment">
+			<null />
+		</property>
+		<property name="member" ref="member4" />
+		<property name="position" ref="officer" />
+		<property name="brotherhood" ref="brotherhood1" />
+	</bean>
+
+
+
 
 
 

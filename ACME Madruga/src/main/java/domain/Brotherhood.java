@@ -23,12 +23,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Brotherhood extends Actor {
 
 	//Atributos de clase
-	private String					title;
-	private Date					establishmentDate;
-	private Collection<String>		pictures;
+	private String				title;
+	private Date				establishmentDate;
+	private Collection<String>	pictures;
 
 	//Atributos de asociación
-	private Collection<Enrollment>	enrollments;
+	private Collection<Member>	members;
 
 
 	@NotBlank
@@ -63,12 +63,12 @@ public class Brotherhood extends Actor {
 
 	@Valid
 	@OneToMany
-	public Collection<Enrollment> getEnrollments() {
-		return this.enrollments;
+	public Collection<Member> getMembers() {
+		return this.members;
 	}
 
-	public void setEnrollments(final Collection<Enrollment> enrollments) {
-		this.enrollments = enrollments;
+	public void setMembers(final Collection<Member> members) {
+		this.members = members;
 	}
 
 }
