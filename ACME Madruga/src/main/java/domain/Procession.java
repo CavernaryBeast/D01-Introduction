@@ -22,15 +22,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Procession extends DomainEntity {
 
 	//Atributos de clase
-	private String				ticker;
-	private String				title;
-	private String				description;
-	private Date				moment;
-	private String				mode;
+	private String						ticker;
+	private String						title;
+	private String						description;
+	private Date						moment;
+	private String						mode;
 
 	//Atributos de asociación
-	private Brotherhood			brotherhood;
-	private Collection<Float>	floats;
+	private Brotherhood					brotherhood;
+	private Collection<domain.Float>	floats;
 
 
 	@NotBlank

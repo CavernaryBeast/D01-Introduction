@@ -87,7 +87,7 @@ public class EnrollmentService {
 		return saved;
 	}
 
-	public Enrollment assignPosition(final int enrollmentId, final int positionId) {
+	public Enrollment enroll(final int enrollmentId, final int positionId) {
 
 		Assert.isTrue(enrollmentId != 0);
 		Assert.isTrue(positionId != 0);
@@ -101,6 +101,7 @@ public class EnrollmentService {
 		final Position position = this.positionService.findOne(positionId);
 
 		enroll.setPosition(position);
+		enroll.setDropOutMoment(null);
 
 		return this.enrollmentRepository.save(enroll);
 	}
