@@ -24,6 +24,9 @@ public class AdministratorService {
 
 
 	public Administrator create() {
+
+		final Administrator principal = this.findByPrincipal();
+
 		final Administrator res = new Administrator();
 
 		this.actorService.setNewActor(Authority.ADMINISTRATOR, res);

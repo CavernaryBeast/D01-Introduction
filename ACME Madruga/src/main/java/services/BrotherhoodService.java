@@ -13,6 +13,7 @@ import repositories.BrotherhoodRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Administrator;
 import domain.Brotherhood;
 import domain.Enrollment;
 
@@ -25,6 +26,9 @@ public class BrotherhoodService {
 
 	@Autowired
 	private ActorService			actorService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	public Brotherhood create() {
@@ -116,6 +120,15 @@ public class BrotherhoodService {
 		Assert.isTrue(id != 0);
 		final Collection<Brotherhood> res = this.brotherhoodRepository.findHasBelonged(id);
 		Assert.notEmpty(res);
+
+		return res;
+	}
+
+	public Collection<Double> findAvgMinMaxStdDev() {
+
+		final Administrator principal = this.administratorService.findByPrincipal();
+		final Collection<Double> res = this.brotherhoodRepository.findAvgMinMaxStdDev();
+		Assert.notNull(res);
 
 		return res;
 	}

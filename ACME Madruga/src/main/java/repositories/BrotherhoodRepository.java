@@ -21,4 +21,7 @@ public interface BrotherhoodRepository extends JpaRepository<Brotherhood, Intege
 	@Query("select bro from Brotherhood bro join bro.enrollment enroll join enroll.member mem " + "where mem.userAccount.id=?1 AND enroll.position IS NULL AND enroll.dropOutMoment IS NOT NULL")
 	Collection<Brotherhood> findHasBelonged(int id);
 
+	@Query("select avg(enrolls.size), min(enrolls.size), max(enrolls.size), stddev(enrolls.size) from Brotherhood bro join bro.enrollments enrolls where enrolls.position IS NOT NULL ")
+	Collection<Double> findAvgMinMaxStdDev();
+
 }
