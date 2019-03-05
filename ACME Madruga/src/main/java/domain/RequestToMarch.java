@@ -3,6 +3,7 @@ package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -55,7 +56,7 @@ public class RequestToMarch extends DomainEntity {
 	}
 
 	@Valid
-	@OneToOne(optional = true)
+	@OneToOne(optional = true, cascade = CascadeType.ALL)
 	public ProcessionPosition getProcessionPosition() {
 		return this.processionPosition;
 	}

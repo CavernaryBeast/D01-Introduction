@@ -22,6 +22,28 @@
 			Add your own converters using entries of the following form: 
 			<bean class="converters.Class1ToClass2" /> 
 		-->
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.AuthorityToStringConverter" />
+		<bean class="converters.BrotherhoodToStringConverter" />
+		<bean class="converters.EnrollmentToStringConverter" />
+		<bean class="converters.FloatToStringConverter" />
+		<bean class="converters.MemberToStringConverter" />
+		<bean class="converters.PositionToStringConverter" />
+		<bean class="converters.ProcessionPositionToStringConverter" />
+		<bean class="converters.ProcessionToStringConverter" />
+		<bean class="converters.RequestToMarchToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+		<bean class="converters.StringToAuthorityConverter" />
+		<bean class="converters.StringToBrotherhoodConverter" />
+		<bean class="converters.StringToEnrollmentConverter" />
+		<bean class="converters.StringToFloatConverter" />
+		<bean class="converters.StringToMemberConverter" />
+		<bean class="converters.StringToPositionConverter" />
+		<bean class="converters.StringToProcessionConverter" />
+		<bean class="converters.StringToProcessionPositionConverter" />
+		<bean class="converters.StringToRequestToMarchConverter" />
 	</util:list>
 	
 </beans>
